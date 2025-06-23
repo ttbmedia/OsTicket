@@ -29,95 +29,31 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 
 ## Installation Steps
 
-### 1. Create an Azure VM
+### 1. Create Azure VM
 
-- Create an Azure VM using **Windows 10** with **4 vCPUs**.
-- Get the VM's IP address and connect using **Remote Desktop Connection**.
+Create an Azure VM using **Windows 10** with **4 vCPUs**.
 
-### 2. Inside the VM
-
-- Download and extract the **osTicket** files.
-
-### 3. Enable IIS
-
-- Open:  
-  `Control Panel → Programs → Programs and Features → Turn Windows features on or off`
-- Navigate to:  
-  `Internet Information Systems → World Wide Web Services → Application Development Features`
-- Enable **CGI**, click **OK**, and complete installation.
-
-### 4. Install Required Components
-
-- From `osTicket-Installation-Files` folder:
-  - Install **PHP Manager for IIS**: `PHPManagerForIIS_V1.5.0.msi`
-  - Install **URL Rewrite Module**: `rewrite_amd64_en-US.msi`
-  - Create directory `C:\PHP`
-  - Extract **PHP 7.3.8** into `C:\PHP`: `php-7.3.8-nts-Win32-VC15-x86.zip`
-  - Install **VC_redist.x86.exe`
-  - Install **MySQL 5.5.62**: `mysql-5.5.62-win32.msi`
-    - Typical Setup → Launch Configuration Wizard → Standard Configuration  
-    - Username: `ROOT`, Password: `ROOT`
-
-### 5. Configure IIS
-
-- Open **IIS** as Administrator
-- Register PHP:
-  - Use **PHP Manager** → Point to: `C:\PHP\php-cgi.exe`
-- Reload IIS (Stop & Start the server)
-
-### 6. Install osTicket v1.15.8
-
-- From `osTicket-Installation-Files`, unzip `osTicket-v1.15.8.zip`
-- Copy the `upload` folder to `C:\inetpub\wwwroot`
-- Rename `upload` to `osTicket`
-- Reload IIS
-- In IIS:  
-  `Sites → Default → osTicket → Click "Browse *:80"`
-
-### 7. Enable PHP Extensions
-
-- In IIS:  
-  `Sites → Default Web Site → osTicket → PHP Manager`
-- Click **Enable or disable an extension**
-- Enable:
-  - `php_imap.dll`
-  - `php_intl.dll`
-  - `php_opcache.dll`
-- Refresh osTicket site to confirm changes
-
-### 8. Rename Configuration File
-
-- Rename the file:
-  - From: `C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php`
-  - To: `C:\inetpub\wwwroot\osTicket\include\ost-config.php`
-
-### 9. Set Permissions
-
-- Disable inheritance for `ost-config.php`
-- Remove all existing permissions
-- Add permission for **Everyone** with **Full Control**
-
-### 10. Complete osTicket Setup
-
-- Reload the osTicket website
-- Fill in the required personal information
-
-### 11. Install HeidiSQL
-
-- From the installation folder, install **HeidiSQL**
-- Open HeidiSQL:
-  - Click **New** on bottom left
-  - Enter password: `root`
-  - Click **Open**
-- Right-click `(Unnamed)` → Create new → Database
-  - Name it **osTicket**
-
-### 12. Finalize Installation
-
-- Go back to the osTicket site
-- Input database info (DB name: `osTicket`, user: `root`, password: `root`)
-- Click **Install**
+![Create VM](images/create-vm.png)
 
 ---
 
-🎉 **osTicket has been successfully installed!**
+### 2. Connect via Remote Desktop
+
+Use the VM's IP address in the **Remote Desktop Connection** program.
+
+![Remote Desktop](images/remote-desktop.png)
+
+---
+
+### 3. Download and Extract osTicket
+
+Download the osTicket package within the VM and extract the contents.
+
+![Extract osTicket](images/extract-osticket.png)
+
+---
+
+### 4. Enable IIS
+
+Open:
+
